@@ -1,0 +1,15 @@
+1. TO INSTALL MPI ON UBUNTU 
+Sudo apt-get update
+sudo apt-get install libcr-dev mpich2 mpich2-doc
+
+2. TO COMPILE AND RUN THE CODE :
+mpicc file_name.c -o new_name
+mpirun -np 2 ./new_name
+
+
+MPI_Bcast()		- Broadcast from root to all other processes
+MPI_Gather()		- Gather values for group of processes
+MPI_Scatter()		- Scatters buffer in parts to group of processes
+MPI_Alltoall()		- Sends data from all processes to all processes
+MPI_Reduce()		- Combine values on all processes to single value
+MPI_Reduce_scatter()	- Combine values and scatter results
