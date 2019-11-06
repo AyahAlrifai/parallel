@@ -13,7 +13,6 @@ int j=0;
 	MPI_Comm_size(MPI_COMM_WORLD,&nproc);
 	MPI_Comm_rank(MPI_COMM_WORLD,&myid);
 
-	MPI_Bcast(data, MAXSIZE, MPI_INT, 0, MPI_COMM_WORLD); /* broadcast data */
 	x = MAXSIZE/nproc; /* Add my portion Of data */
 	low = myid * x;
 	high = low + x;
