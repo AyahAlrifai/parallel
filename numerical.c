@@ -25,18 +25,15 @@ void main(int argc, char* argv[])
 int j=0;
 	int data[MAXSIZE], i, x, low, high;
 	float myresult=0, result=0;
-	char fn[255];
-	char *fp;
 	MPI_Init(&argc,&argv);
 	MPI_Comm_size(MPI_COMM_WORLD,&nproc);
 	MPI_Comm_rank(MPI_COMM_WORLD,&myid);
-	x = MAXSIZE/nproc; /* Add my portion Of data */
+	x = MAXSIZE/nproc; 
 	low = myid * x;
 	high = low + x;
 	for(i=low ;i<high;i++)
 	{
 	myresult+=power(2,i)/fact(i);
-
 	}
 	MPI_Reduce(&myresult, &result, 1, MPI_FLOAT, MPI_SUM, 0, MPI_COMM_WORLD);
 	if (myid == 0) 

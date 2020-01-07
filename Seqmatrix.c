@@ -39,8 +39,7 @@ void main(int argc, char* argv[])
 	int myid, nproc;
 	int n=0,m=0;
 	int A[MAXSIZE][MAXSIZE],B[MAXSIZE],C[MAXSIZE]={0,0,0,0},i,j,low, high, myresult=0, sum=0;
-	char fn[255];
-	char *fp;
+
 	MPI_Init(&argc,&argv);
 	MPI_Comm_size(MPI_COMM_WORLD,&nproc);
 	MPI_Comm_rank(MPI_COMM_WORLD,&myid);
@@ -53,7 +52,6 @@ void main(int argc, char* argv[])
 		}
 	printf("C=\n");
 	printC(C);
-	//printf("p(%d)=%d\ntime=%f\n", a, sum,(t2-t1)); /* Compute global sum */
 	MPI_Finalize();
 }
 

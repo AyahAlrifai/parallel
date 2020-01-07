@@ -7,12 +7,11 @@ void main(int argc, char* argv[])
 	int myid, nproc;
 	int j=0;
 	int data, i, x, low, high, myresult=0, result=0;
-	char fn[255];
-	char *fp;
+
 	MPI_Init(&argc,&argv);
 	MPI_Comm_size(MPI_COMM_WORLD,&nproc);
 	MPI_Comm_rank(MPI_COMM_WORLD,&myid);
-	x = MAXSIZE/nproc; /* Add my portion Of data */
+	x = MAXSIZE/nproc; 
 	data=myid;
 	int recbuf[nproc];
 

@@ -20,7 +20,9 @@ void main(int argc, char* argv[])
 	int bin[MAXSIZE],i,j,low,high;
 	int max,max_value[8],max_solution[8];
 	int max_sol=0,max_v=0,current_v=0,current_w=0;
-
+	char fn[255];
+	char *fp;
+	
 	MPI_Init(&argc,&argv);
 	MPI_Comm_size(MPI_COMM_WORLD,&nproc);
 	MPI_Comm_rank(MPI_COMM_WORLD,&myid);
@@ -30,6 +32,7 @@ void main(int argc, char* argv[])
 	MPI_Bcast(v, MAXSIZE, MPI_INT, 0, MPI_COMM_WORLD); 
 	max_v=0;
 	max_sol=low;
+	
 	for(j = low; j < high; j++)
 	{
 		binary(bin,j);
@@ -48,6 +51,7 @@ void main(int argc, char* argv[])
 	}
 	MPI_Gather(&max_v,1,MPI_INT, &max_value,1, MPI_INT, 0, MPI_COMM_WORLD);
 	MPI_Gather(&max_sol,1,MPI_INT, &max_solution,1, MPI_INT, 0, MPI_COMM_WORLD);
+	
 	if(myid==0)
 	{
 		max=0;
@@ -68,5 +72,6 @@ void main(int argc, char* argv[])
 			printf("%d\t",bin[i]);
 		printf("\n");	
 	}
+	
 	MPI_Finalize();
 }

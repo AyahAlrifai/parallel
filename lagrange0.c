@@ -9,14 +9,13 @@ void main(int argc, char* argv[])
 	int myid, nproc;
 	int n=0,m=0;
 	int x[MAXSIZE],y[MAXSIZE],a=7,i,z,low, high, all_sum=0, sum=0;
-	char fn[255];
-	char *fp;
+
 	MPI_Init(&argc,&argv);
 	MPI_Comm_size(MPI_COMM_WORLD,&nproc);
 	MPI_Comm_rank(MPI_COMM_WORLD,&myid);
 	double t1,t2;
 	t1=MPI_Wtime();
-	z = MAXSIZE/nproc; /* Add my portion Of data */
+	z = MAXSIZE/nproc;
 	low = myid * z;
 	high = low + z; 
 	for(i=0;i<MAXSIZE;i++)
